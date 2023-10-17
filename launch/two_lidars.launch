@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="rosbag" type="play" name="play" args= "-q /home/philip/catkin_ws/src/lidar_calibration/data/two_lidars/2022-06-14-12-01-01.bag" output="screen"> 
+  </node>
+  <node pkg ="lidar_calibration" type="calibration" name= "calibration" output="screen"/> 
+  <node pkg="rviz" name="rviz" type="rviz" args="-d $(find lidar_calibration)/rviz/two_lidars.rviz" />
+</launch>
