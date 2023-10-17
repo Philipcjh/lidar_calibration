@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-FIND_PACKAGE( PCL REQUIRED COMPONENTS common io visualization )
+FIND_PACKAGE(PCL REQUIRED COMPONENTS common io visualization)
 find_package(OpenCV REQUIRED)
 
 catkin_package()
