@@ -1,7 +1,7 @@
 # lidar_calibration
 
 ## 项目简介
-本项目实现了激光雷达标定外参矩阵的数据处理
+本项目实现了激光雷达标定外参矩阵的数据处理，获取从激光雷达坐标系到东北天坐标系的齐次变换矩阵
 
 ## 环境配置
 * OpenCV
@@ -29,3 +29,14 @@ $ rosrun pcl_ros pointcloud_to_pcd /input:=/rslidar_points ./
 6. 用[calibratio.cpp ](src/calibration.cpp)函数RotationMatrix2RPY()计算步骤5中得到的齐次变换矩阵左上角3x3的旋转矩阵对应的欧拉角，用于后续速腾雷达参数设置中的roll, pitch, yaw;
 
 7. (可选) 用[calibratio.cpp ](src/calibration.cpp)在ROS订阅原始雷达信息，转换成PCL点云格式后利用齐次变换矩阵将点云变换到全局坐标系下，然后发布出去，该操作主要通过回调函数low_callback()完成。
+
+## 标定结果
+1. 两个激光雷达拼接效果
+![](image/merge.png)
+2. 激光雷达地面拟合结果
+* 低处激光雷达
+![](image/low_lidar_ransac.png)
+* 高处激光雷达
+![](image/high_lidar_ransac.png)
+* 两个激光雷达拼接
+![](image/two_lidars_ransac.png)
