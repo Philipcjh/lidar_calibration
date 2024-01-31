@@ -25,11 +25,11 @@ $ rosrun pcl_ros pointcloud_to_pcd /input:=/rslidar_points ./
 
 4. 用[calibration.cpp](src/calibration.cpp)的函数read_lidar_txt()读取激光雷达坐标系下的角点坐标并存到lidar_points中，用read_neh_txt()读取东北天坐标系下的角点坐标并存到global_points;
 
-5. 用[calibratio.cpp](src/calibration.cpp)函数pose_estimation_3d3d(),即Kabsch算法，去计算从激光雷达坐标系到东北天坐标系的齐次变换矩阵transformation_matrix_low_to_global;
+5. 用[calibration.cpp](src/calibration.cpp)函数pose_estimation_3d3d(),即Kabsch算法，去计算从激光雷达坐标系到东北天坐标系的齐次变换矩阵transformation_matrix_low_to_global;
 
-6. 用[calibratio.cpp ](src/calibration.cpp)函数RotationMatrix2RPY()计算步骤5中得到的齐次变换矩阵左上角3x3的旋转矩阵对应的欧拉角，用于后续速腾雷达参数设置中的roll, pitch, yaw;
+6. 用[calibration.cpp ](src/calibration.cpp)函数RotationMatrix2RPY()计算步骤5中得到的齐次变换矩阵左上角3x3的旋转矩阵对应的欧拉角，用于后续速腾雷达参数设置中的roll, pitch, yaw;
 
-7. (可选) 用[calibratio.cpp ](src/calibration.cpp)在ROS订阅原始雷达信息，转换成PCL点云格式后利用齐次变换矩阵将点云变换到全局坐标系下，然后发布出去，该操作主要通过回调函数low_callback()完成。
+7. (可选) 用[calibration.cpp ](src/calibration.cpp)在ROS订阅原始雷达信息，转换成PCL点云格式后利用齐次变换矩阵将点云变换到全局坐标系下，然后发布出去，该操作主要通过回调函数low_callback()完成。
 
 ## 标定结果
 1. 两个激光雷达拼接效果
